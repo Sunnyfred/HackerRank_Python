@@ -1,0 +1,189 @@
+# Introduction
+
+1.Python If-Else
+
+def weird(n):
+    if n%2==1 or 6 <= n <= 20:
+        print('Weird')
+    else:
+        print('Not weird')
+weird(int(input()))
+
+
+2.Arithmetic Operators
+
+if __name__ == '__main__':
+    a = int(input())
+    b = int(input())
+# We use if __name__ == “__main__” block to prevent (certain) code from being run when the module is imported. when run directly in this module, __main__ is set to __name__, otherwise (import in another module instead of run directly in current module) set the file/module name to __name__
+
+def task(a,b):
+    print(a+b)
+    print(a-b)
+    print(a*b)
+
+task(a,b)
+
+3.Python: Division
+
+if __name__ == '__main__':
+    a = int(input())
+    b = int(input())
+
+def task(a,b):
+    print(a//b)
+    print(a/b)
+
+task(a,b)
+
+4. Loops
+
+if __name__ == '__main__':
+    n = int(input())
+
+def squre(n):
+    for i in range(n):
+        print(i*i)
+
+squre(n)
+
+
+5. Write a function
+
+def is_leap(year):
+    leap = False
+    
+    # Write your logic here
+    if(year%4==0 and (year %100 !=0 or year%400 ==0)):
+        leap = True
+   
+    return leap
+
+year = int(input())
+print(is_leap(year))
+
+
+6. Print Function
+
+if __name__ == '__main__':
+    n = int(input())
+
+def prints(n):
+    for i in range(1, n+1):
+        print(i, end='')
+
+prints(n)
+
+
+
+# Basic Data Types
+
+1.List Comprehensions
+
+if __name__ == '__main__':
+    x = int(input())
+    y = int(input())
+    z = int(input())
+    n = int(input())
+
+listanswer = [[i,j,k] for i in range(x+1) for j in range(y+1) for k in range(z+1) if i+j+k!=n]
+print(listanswer)
+
+
+
+2. Find the Runner-Up Score!
+
+if __name__ == '__main__':
+    n = int(input())
+    arr = map(int, input().split())
+
+print(sorted(list(set(arr))))
+
+or 
+
+if __name__ == '__main__':
+    n = int(input())
+    arr = map(int, input().split())
+arr2 = sorted(arr,reverse=True)
+for i in range(len(arr2)):
+    if(arr2[i]!=max(arr2)):
+        print(arr2[i])
+        break
+        
+ 3. Nested Lists
+ 
+ if __name__ == '__main__':
+    classList = []
+    n = int(input())
+    for _ in range(n):
+        name = input()
+        score = float(input())
+        classList.append([name, score])
+
+
+def secondLowestGrade(classList):
+    secondLowestScore = sorted(set(c[1] for c in classList))[1]
+    result = sorted([c[0] for c in classList if c[1] == secondLowestScore])
+    return result
+
+
+print('\n'.join(secondLowestGrade(classList)))
+
+
+
+4. Finding the percentage
+
+if __name__ == '__main__':
+    n = int(input())
+    student_marks = {}
+    for _ in range(n):
+        name, *line = input().split()   # * collects all the positional arguments in a tuple; ** collects all the keyword arguments in a dictionary.
+        scores = list(map(float, line))
+        student_marks[name] = scores
+    query_name = input()
+
+def avg(student_marks, query_name):
+    score = sum(student_marks[query_name]) / 3 
+    return score
+
+x = avg(student_marks, query_name)
+print('%.2f' % x)
+
+
+5. Lists
+
+
+def handle(result):
+    inp = input().split()
+    command = inp[0]
+    values = inp[1:]
+    if command=='print':
+        print(result)
+    else:
+        eval('result.'+command+'('+ ",".join(values) +')') 
+
+
+result = []
+n=int(input())
+for i in range(n):
+    handle(result)
+    
+    
+6. Tuples
+
+if __name__ == '__main__':
+    n = int(input())
+    integer_list = map(int, input().split())
+
+print(hash(tuple(integer_list)))
+
+
+
+
+
+
+
+
+
+   
+  
