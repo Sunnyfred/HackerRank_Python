@@ -421,6 +421,139 @@ if __name__ == '__main__':
     
     
     
+14. Merge the Tools!
+
+def merge_the_tools(string, k):
+    # your code goes here
+    while string:
+        s = string[0:k]
+        seen = ''
+        for c in s:
+            if c not in seen:
+                seen += c
+        print(seen)
+        string = string[k:]
+
+if __name__ == '__main__':
+    string, k = input(), int(input())
+    merge_the_tools(string, k)
+    
+    
+# Classes
+
+1. Classes: Dealing with Complex Numbers
+
+import math
+
+class Complex(object):
+    def __init__(self, real, imaginary):
+        self.real=real
+        self.imaginary=imaginary
+    def __add__(self, no):
+        a=self.real+no.real
+        b=self.imaginary+no.imaginary
+        if a<0 and b<0:
+            return ("-%.2f-%.2fi"%(abs(a),abs(b)))
+        elif a>=0 and b<0:
+            return ("%.2f-%.2fi"%(abs(a),abs(b)))
+        elif a<0and b>=0:
+            return ("-%.2f+%.2fi"%(abs(a),abs(b)))
+        elif a>=0and b>=0:
+            return ("%.2f+%.2fi"%(abs(a),abs(b)))
+    def __sub__(self, no):
+        a=self.real-no.real
+        b=self.imaginary-no.imaginary
+        if a<0 and b<0:
+            return ("-%.2f-%.2fi"%(abs(a),abs(b)))
+        elif a>=0 and b<0:
+            return ("%.2f-%.2fi"%(abs(a),abs(b)))
+        elif a<0and b>=0:
+            return ("-%.2f+%.2fi"%(abs(a),abs(b)))
+        elif a>=0and b>=0:
+            return ("%.2f+%.2fi"%(abs(a),abs(b)))
+    
+    def __mul__(self, no):
+        a=self.real*no.real-self.imaginary*no.imaginary
+        b=no.imaginary*self.real+self.imaginary*no.real
+        if a<0 and b<0:
+            return ("-%.2f-%.2fi"%(abs(a),abs(b)))
+        elif a>=0 and b<0:
+            return ("%.2f-%.2fi"%(abs(a),abs(b)))
+        elif a<0and b>=0:
+            return ("-%.2f+%.2fi"%(abs(a),abs(b)))
+        elif a>=0and b>=0:
+            return ("%.2f+%.2fi"%(abs(a),abs(b)))
+    def __truediv__(self, no):
+        x=no.real**2+no.imaginary**2
+        a=(self.real*no.real+self.imaginary*no.imaginary)/x
+        b=(-no.imaginary*self.real+self.imaginary*no.real)/x
+        if a<0 and b<0:
+            return ("-%.2f-%.2fi"%(abs(a),abs(b)))
+        elif a>=0 and b<0:
+            return ("%.2f-%.2fi"%(abs(a),abs(b)))
+        elif a<0and b>=0:
+            return ("-%.2f+%.2fi"%(abs(a),abs(b)))
+        elif a>=0and b>=0:
+            return ("%.2f+%.2fi"%(abs(a),abs(b)))
+        
+    def mod(self):
+        a=math.pow(self.real**2+self.imaginary**2, 0.5)
+        b=0
+        if a<0 and b<0:
+            return ("-%.2f-%.2fi"%(abs(a),abs(b)))
+        elif a>=0 and b<0:
+            return ("%.2f-%.2fi"%(abs(a),abs(b)))
+        elif a<0and b>=0:
+            return ("-%.2f+%.2fi"%(abs(a),abs(b)))
+        elif a>=0and b>=0:
+            return ("%.2f+%.2fi"%(abs(a),abs(b)))
+
+if __name__ == '__main__':
+    c = map(float, input().split())
+    d = map(float, input().split())
+    x = Complex(*c)
+    y = Complex(*d)
+    print(*map(str, [x+y, x-y, x*y, x/y, x.mod(), y.mod()]), sep='\n')
+    
+    
+    
+    
+2 Class 2 - Find the Torsional Angle
+
+import math
+
+class Points(object):
+    def __init__(self, x, y, z):
+        self.x=x
+        self.y=y
+        self.z=z
+
+    def __sub__(self, no):
+        return  Points((self.x-no.x),(self.y-no.y),(self.z-no.z))
+
+    def dot(self, no):
+        return (self.x*no.x)+(self.y*no.y)+(self.z*no.z)
+
+    def cross(self, no):
+        return Points((self.y*no.z-self.z*no.y),(self.z*no.x-self.x*no.z),(self.x*no.y-self.y*no.x))
+        
+    def absolute(self):
+        return math.pow((self.x ** 2 + self.y ** 2 + self.z ** 2), 0.5)
+
+if __name__ == '__main__':
+    points = list()
+    for i in range(4):
+        a = list(map(float, input().split()))
+        points.append(a)
+
+    a, b, c, d = Points(*points[0]), Points(*points[1]), Points(*points[2]), Points(*points[3])
+    x = (b - a).cross(c - b)
+    y = (c - b).cross(d - c)
+    angle = math.acos(x.dot(y) / (x.absolute() * y.absolute()))
+
+    print("%.2f" % math.degrees(angle))
+    
+    
     
 
 
