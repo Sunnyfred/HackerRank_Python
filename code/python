@@ -555,12 +555,502 @@ if __name__ == '__main__':
     
     
     
+    
+# Built-Ins
+
+
+1. Zipped! (zip： This function returns a list of tuples)
+
+n, x = map(int, input().split()) 
+
+sheet = []
+for _ in range(x):
+    sheet.append( map(float, input().split()) ) 
+
+for i in zip(*sheet): 
+    print( sum(i)/x )
+    
+    
+2. Input()
+
+x,k=map(int, input().split())
+print (k==eval(input()))
+
+
+
+3. Python Evaluation
+
+eval(input())
+
+
+4. Athlete Sort
+
+
+import math
+import os
+import random
+import re
+import sys
+
+
+
+if __name__ == '__main__':
+    nm = input().split()
+
+    n = int(nm[0])
+
+    m = int(nm[1])
+
+    arr = []
+
+    for _ in range(n):
+        arr.append(list(map(int, input().rstrip().split())))
+
+    k = int(input())
+
+
+arr.sort(key=lambda x: x[k])
+
+for line in arr:
+    print(*line, sep=' ', end='\n')
+
+
+    
+
+5. Any or All
+
+N, l = int(input()), input().split(' ')
+print(all([int(i)>0 for i in l]) and any([j == j[::-1] for j in l]))
+
+
+6. ginortS
+
+print(*(sorted(input(), key=lambda x: (x.isdigit(), x.isdigit() and int(x)%2==0, x.isupper(), x.islower()))), sep='')
+
+# Sorting1234
+# key=lambda x: (x.isdigit())
+# Sorting1234 -> FFFFFFFTTTT (Sorting1234)
+# key=lambda x: (x.isdigit(), x.isdigit() and int(x)%2==0)
+# Sorting1234 -> FFFFFFF(FFTT) (Sorting1324)
+# key=lambda x: (x.isdigit(), x.isdigit() and int(x)%2==0, x.isupper())
+# Sorting1324 -> (FFFFFFT)FFTT (ortingS1324)
+# key=lambda x: (x.isdigit(), x.isdigit() and int(x)%2==0, x.isupper(), x.islower())
+# ortingS1324 -> (FFFFFF)TFFTT (ortingS1324)
+# key=lambda x: (x.isdigit(), x.isdigit() and int(x)%2==0, x.isupper(), x.islower(),x) 
+# here x is used to perform defalut order rule
+# ortingS1324 -> ginortS1324
 
 
 
 
 
 
+# Numpy
+
+1. Shape and Reshape
+
+import numpy
+
+def arrays(arr):
+    # complete this function
+    # use numpy.array
+    return numpy.array(arr[::-1],float)
+
+arr = input().strip().split(' ')
+result = arrays(arr)
+print(result)
+
+
+2. Shape and Reshape
+
+
+
+import numpy
+
+arr = input().strip().split(' ')
+arr2 = numpy.array(arr,int)
+print(numpy.reshape(arr2,(3,3)))
+
+
+
+3. Transpose and Flatten
+
+
+import numpy
+
+N, M = map(int, input().split(' '))
+arr = [input().strip().split(' ') for _ in range(N)]
+arr2 = numpy.array(arr, int)
+print(arr2.transpose())
+print(arr2.flatten())
+
+
+4. Concatenate
+
+import numpy
+
+N, M, P = map(int, input().split(' '))
+arr = [input().strip().split(' ') for _ in range(N)]
+arr2 = [input().strip().split(' ') for _ in range(M)]
+n_arr = numpy.array(arr, int)
+n_arr2 = numpy.array(arr2, int)
+result = numpy.concatenate((n_arr, n_arr2), axis = 0)
+print(result)
+
+
+
+5. Zeros and Ones
+
+import numpy
+
+x, y, z = map(int, input().split(' '))
+print(numpy.zeros((x,y,z), dtype = numpy.int))
+print(numpy.ones((x,y,z), dtype = numpy.int))
+
+
+6.Zeros and Ones
+
+
+import numpy
+
+nums = tuple(map(int, input().split()))
+print (numpy.zeros(nums, dtype = numpy.int))
+print (numpy.ones(nums, dtype = numpy.int))
 
    
-  
+   
+7. Eye and Identity
+
+   
+import numpy
+print(str(numpy.eye(*map(int,input().split()))).replace('1',' 1').replace('0',' 0'))
+
+
+
+8. Array Mathematics
+
+import numpy as np
+n, m = map(int, input().split())
+a, b = (np.array([input().split() for _ in range(n)], dtype=int) for _ in range(2))
+#print(a+b, a-b, a*b, a//b, a%b, a**b, sep='\n')
+print(np.add(a,b), np.subtract(a,b), np.multiply(a,b), np.floor_divide(a,b), np.mod(a,b), np.power(a,b), sep='\n')
+
+
+9. Floor, Ceil and Rint
+
+import numpy as np
+
+np.set_printoptions(sign=' ')
+
+arr = input().strip().split(' ')
+n_arr = np.array(arr, float)
+print(np.floor(n_arr))
+print(np.ceil(n_arr))
+print(np.rint(n_arr))
+
+
+10. Sum and Prod
+
+import numpy
+N, M = map(int, input().split())
+A = numpy.array([input().split() for _ in range(N)],int)
+print(numpy.prod(numpy.sum(A, axis=0), axis=0))
+
+
+
+11. Min and Max
+import numpy as np
+
+print(np.max(np.min(np.array([input().split() for _ in range(int(input().split()[0]))],int),axis=1)))
+
+12. Mean, Var, and Std
+
+import numpy
+
+N, M = map(int, input().split(' '))
+
+my_array = numpy.array([ input().split(' ') for i in range(N) ], int)
+
+numpy.set_printoptions(legacy='1.13')
+print(numpy.mean(my_array, axis = 1)) 
+print(numpy.var(my_array, axis = 0))  
+print(numpy.std(my_array, axis = None)) 
+
+
+13. Dot and Cross
+
+import numpy
+n=int(input())
+a = numpy.array([input().split() for _ in range(n)],int)
+b = numpy.array([input().split() for _ in range(n)],int)
+m = numpy.dot(a,b)
+print (m)
+
+
+
+14. Inner and Outer
+
+import numpy as np
+A = np.array(input().split(), int)
+B = np.array(input().split(), int)
+print(np.inner(A,B), np.outer(A,B), sep='\n')
+
+
+15. Polynomials
+
+import numpy
+
+print(numpy.polyval(list(map(float,input().split())),float(input())))
+
+
+16. Linear Algebra
+
+import numpy
+print(round(numpy.linalg.det(numpy.array([list(map(float,input().split())) for _ in range(int(input()))])),2))
+
+
+# Sets
+
+1. Introduction to Sets
+
+def average(array):
+    # your code goes here
+    s_array = set(array)
+    l_s_array = list(s_array)
+    return sum(l_s_array)/len(l_s_array)
+
+
+if __name__ == '__main__':
+    n = int(input())
+    arr = list(map(int, input().split()))
+    result = average(arr)
+    print(result)
+    
+    
+2 Symmetric Difference
+
+M = int(input())
+arr1 = map(int,input().split(' '))
+N = int(input())
+arr2 = map(int,input().split(' '))
+
+s_arr1 = set(arr1)
+s_arr2 = set(arr2)
+
+l_arr1 = s_arr1.difference(s_arr2)
+l_arr2 = s_arr2.difference(s_arr1)
+
+
+arr_t = list(l_arr1.union(l_arr2))
+arr_t.sort()
+
+for i in range(len(arr_t)):
+    print(arr_t[i])
+    
+    
+3 No Idea!
+
+_ = input()
+array = input().split()
+like = set(input().split())
+dislike = set(input().split())
+print(sum((i in like) - (i in dislike) for i in array))
+
+
+
+4. Set .add()
+
+n = int(input())
+s = set()
+for i in range(n):
+    string = input()
+    s.add(string)
+print(len(s))
+
+
+5. Set .discard(), .remove() & .pop()
+
+n = int(input())
+s = set(map(int, input().split()))
+d = {"pop":s.pop, "remove":s.remove, "discard": s.discard}
+for _ in range(int(input())):
+    c = input().split()
+    d[c[0]](int(c[1])) if len(c)>1 else d[c[0]]()
+print(sum(s))
+
+or 
+
+n = int(input())
+s = set(map(int, input().split())) 
+for i in range(int(input())):
+    eval('s.{0}({1})'.format(*input().split()+['']))
+
+print(sum(s))
+
+
+6. Set .union() Operation
+
+_, a = input(), set(input().split())
+_, b = input(), set(input().split())
+print(len(a.union(b)))
+
+
+
+7. Set .intersection() Operation
+
+num1, st1, num2, st2 = (set(input().split()) for i in range(4))
+print len(st1.intersection(st2))
+
+
+8. Set .difference() Operation
+
+n1 = int(input())
+set_1 = set(map(int,input().split()))
+n2 = int(input())
+set_2 = set(map(int,input().split()))
+print(len(set_1.difference(set_2)))
+
+
+9. Set .symmetric_difference() Operation
+
+n1 = int(input())
+set_1 = set(map(int,input().split()))
+n2 = int(input())
+set_2 = set(map(int,input().split()))
+print(len(set_1.symmetric_difference(set_2)))
+
+
+10. Set Mutations
+
+_ = int(input())
+s1 = set(map(int, input().split()))
+N = int(input())
+
+for _ in range(N):
+    cmd, _ = input().split()
+    s2 = set(map(int, input().split()))
+    if(cmd == "intersection_update"):
+        s1.intersection_update(s2)
+    elif(cmd == "update"):
+        s1.update(s2)
+    elif(cmd == "symmetric_difference_update"):
+        s1.symmetric_difference_update(s2)
+    elif(cmd == "difference_update"):
+        s1.difference_update(s2)
+
+print(sum(s1))
+
+    
+    
+11. The Captain's Room
+
+if __name__ == "__main__":
+    K = input()
+    rooms = input().split(' ')
+    
+    rooms.sort()
+    a = set([rooms[i] for i in range(0,len(rooms),2)])
+    b = set([rooms[i] for i in range(1,len(rooms),2)])
+    
+    print(list(a.symmetric_difference(b))[0])
+    
+    
+    
+12. Check Subset
+
+for _ in range(int(input())):
+    x, a, z, b = input(), set(input().split()), input(), set(input().split())
+    print(a.issubset(b))
+    
+    
+13. Check Strict Superset
+
+a = set(input().split())
+print(all(a > set(input().split()) for _ in range(int(input()))))
+
+# set operations
+#len(s)   number of elements in set s (cardinality)
+#x in s   test x for membership in s
+#x not in s   test x for non-membership in s
+#s.issubset(t)   s <= t    test whether every element in s is in t
+#s.issuperset(t)   s >= t   test whether every element in t is in s
+#s.union(t)   s | t   new set with elements from both s and t
+#s.intersection(t)   s & t   new set with elements common to s and t
+#s.difference(t)   s - t   new set with elements in s but not in t
+#s.symmetric_difference(t)   s ^ t   new set with elements in either s or t but not both
+
+
+
+
+# Math
+
+1. Polar Coordinates
+
+import cmath
+rj = complex(input())
+#print(*cmath.polar(complex(input())), sep='\n')
+print((abs(rj)),(cmath.phase(rj)), sep='\n')
+
+
+2. Find Angle MBC
+
+import math 
+AB = int(input()) 
+BC = int(input()) 
+print(str(int(round(math.degrees(math.atan2(AB,BC)))))+'°')
+
+
+3. Triangle Quest 2
+
+for i in range(1,int(input())+1): #More than 2 lines will result in 0 score. Do not leave a blank line also
+    print((10**i//9)**2)
+    
+    
+4. Mod Divmod
+
+a, b = int(input()), int(input())
+print("{d[0]}\n{d[1]}\n{d}".format(d=divmod(a, b)))
+
+
+5. Power - Mod Power
+
+a,b,m = (int(input()) for _ in '123')
+print(pow(a,b),pow(a,b,m),sep='\n')
+
+6. Integers Come In All Sizes
+
+a,b,c,d = (int(input()) for _ in range(4))
+print (pow(a,b)+pow(c,d))
+
+
+7. Triangle Quest
+
+for i in range(1,int(input())): #More than 2 lines will result in 0 score. Do not leave a blank line also
+    print(i*(10**i//9))
+    
+    
+# Collections
+
+
+1. collections.Counter()
+
+    
+import collections
+
+numShoes = int(input())
+shoes = collections.Counter(map(int, input().split()))
+numCust = int(input())
+
+income = 0
+
+for i in range(numCust):
+    size, price = map(int, input().split())
+    if shoes[size]: 
+        income += price
+        shoes[size] -= 1
+
+print(income)
+    
+    
+2. 
+    
