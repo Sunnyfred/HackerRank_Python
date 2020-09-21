@@ -1,0 +1,94 @@
+# Errors and Exceptions
+
+1. Exceptions
+
+for i in range(int(input())):
+    try:
+        a,b = map(int, input().split())
+        print(a//b)
+    except Exception as e: #Errors detected during execution are called exceptions.
+        print('Error Code:',e)
+        
+        
+ 2. Incorrect Regex
+
+import re
+for _ in range(int(input())):
+    ans = True
+    try:
+        reg = re.compile(input())
+    except re.error:
+        ans = False
+    print(ans)
+    
+    
+# Itertools
+
+1. itertools.product()
+
+from itertools import product
+
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+print(*product(a, b))
+
+
+2. itertools.permutations()
+
+import itertools
+
+A, k = input().split()
+l = sorted(list(itertools.permutations(A,int(k))))
+for i in l:
+    print(*[''.join(i)])
+#print(*[''.join(i) for i in itertools.permutations(sorted(A),int(k))],sep='\n')
+
+
+3. itertools.combinations()
+
+from itertools import combinations
+
+s , n  = input().split()
+
+for i in range(1, int(n)+1):
+    for j in combinations(sorted(s), i):
+        print(''.join(j))
+        
+4. itertools.combinations_with_replacement()
+
+from itertools import combinations_with_replacement
+
+s, k = input().split()
+
+for c in combinations_with_replacement(sorted(s), int(k)):
+    print("".join(c))
+    
+    
+5. Compress the String!
+
+from itertools import groupby
+print(*[(len(list(c)), int(k)) for k, c in groupby(input())])
+
+
+6. Iterables and Iterators
+
+from itertools import combinations
+
+N = int(input())
+L = input().split()
+K = int(input())
+
+C = list(combinations(L, K))
+F = filter(lambda c: 'a' in c, C)
+print("{0:.3}".format(len(list(F))/len(C)))
+
+
+7. Maximize It!
+
+from itertools import product
+
+K,M = map(int,input().split())
+N = (list(map(int, input().split()))[1:] for _ in range(K))
+results = map(lambda x: sum(i**2 for i in x)%M, product(*N)) #map(function, iterable)
+print(max(results))
