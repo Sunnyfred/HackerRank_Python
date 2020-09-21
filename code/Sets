@@ -1,0 +1,169 @@
+# Sets
+
+1. Introduction to Sets
+
+def average(array):
+    # your code goes here
+    s_array = set(array)
+    l_s_array = list(s_array)
+    return sum(l_s_array)/len(l_s_array)
+
+
+if __name__ == '__main__':
+    n = int(input())
+    arr = list(map(int, input().split()))
+    result = average(arr)
+    print(result)
+    
+    
+2 Symmetric Difference
+
+M = int(input())
+arr1 = map(int,input().split(' '))
+N = int(input())
+arr2 = map(int,input().split(' '))
+
+s_arr1 = set(arr1)
+s_arr2 = set(arr2)
+
+l_arr1 = s_arr1.difference(s_arr2)
+l_arr2 = s_arr2.difference(s_arr1)
+
+
+arr_t = list(l_arr1.union(l_arr2))
+arr_t.sort()
+
+for i in range(len(arr_t)):
+    print(arr_t[i])
+    
+    
+3 No Idea!
+
+_ = input()
+array = input().split()
+like = set(input().split())
+dislike = set(input().split())
+print(sum((i in like) - (i in dislike) for i in array))
+
+
+
+4. Set .add()
+
+n = int(input())
+s = set()
+for i in range(n):
+    string = input()
+    s.add(string)
+print(len(s))
+
+
+5. Set .discard(), .remove() & .pop()
+
+n = int(input())
+s = set(map(int, input().split()))
+d = {"pop":s.pop, "remove":s.remove, "discard": s.discard}
+for _ in range(int(input())):
+    c = input().split()
+    d[c[0]](int(c[1])) if len(c)>1 else d[c[0]]()
+print(sum(s))
+
+or 
+
+n = int(input())
+s = set(map(int, input().split())) 
+for i in range(int(input())):
+    eval('s.{0}({1})'.format(*input().split()+['']))
+
+print(sum(s))
+
+
+6. Set .union() Operation
+
+_, a = input(), set(input().split())
+_, b = input(), set(input().split())
+print(len(a.union(b)))
+
+
+
+7. Set .intersection() Operation
+
+num1, st1, num2, st2 = (set(input().split()) for i in range(4))
+print len(st1.intersection(st2))
+
+
+8. Set .difference() Operation
+
+n1 = int(input())
+set_1 = set(map(int,input().split()))
+n2 = int(input())
+set_2 = set(map(int,input().split()))
+print(len(set_1.difference(set_2)))
+
+
+9. Set .symmetric_difference() Operation
+
+n1 = int(input())
+set_1 = set(map(int,input().split()))
+n2 = int(input())
+set_2 = set(map(int,input().split()))
+print(len(set_1.symmetric_difference(set_2)))
+
+
+10. Set Mutations
+
+_ = int(input())
+s1 = set(map(int, input().split()))
+N = int(input())
+
+for _ in range(N):
+    cmd, _ = input().split()
+    s2 = set(map(int, input().split()))
+    if(cmd == "intersection_update"):
+        s1.intersection_update(s2)
+    elif(cmd == "update"):
+        s1.update(s2)
+    elif(cmd == "symmetric_difference_update"):
+        s1.symmetric_difference_update(s2)
+    elif(cmd == "difference_update"):
+        s1.difference_update(s2)
+
+print(sum(s1))
+
+    
+    
+11. The Captain's Room
+
+if __name__ == "__main__":
+    K = input()
+    rooms = input().split(' ')
+    
+    rooms.sort()
+    a = set([rooms[i] for i in range(0,len(rooms),2)])
+    b = set([rooms[i] for i in range(1,len(rooms),2)])
+    
+    print(list(a.symmetric_difference(b))[0])
+    
+    
+    
+12. Check Subset
+
+for _ in range(int(input())):
+    x, a, z, b = input(), set(input().split()), input(), set(input().split())
+    print(a.issubset(b))
+    
+    
+13. Check Strict Superset
+
+a = set(input().split())
+print(all(a > set(input().split()) for _ in range(int(input()))))
+
+# set operations
+#len(s)   number of elements in set s (cardinality)
+#x in s   test x for membership in s
+#x not in s   test x for non-membership in s
+#s.issubset(t)   s <= t    test whether every element in s is in t
+#s.issuperset(t)   s >= t   test whether every element in t is in s
+#s.union(t)   s | t   new set with elements from both s and t
+#s.intersection(t)   s & t   new set with elements common to s and t
+#s.difference(t)   s - t   new set with elements in s but not in t
+#s.symmetric_difference(t)   s ^ t   new set with elements in either s or t but not both
