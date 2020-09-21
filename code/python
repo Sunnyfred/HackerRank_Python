@@ -1145,3 +1145,224 @@ class OrderedCounter(Counter, OrderedDict):
     pass
 [print(*c) for c in OrderedCounter(sorted(input())).most_common(3)]
 
+
+
+# Errors and Exceptions
+
+1. Exceptions
+
+for i in range(int(input())):
+    try:
+        a,b = map(int, input().split())
+        print(a//b)
+    except Exception as e: #Errors detected during execution are called exceptions.
+        print('Error Code:',e)
+        
+        
+ 2. Incorrect Regex
+
+import re
+for _ in range(int(input())):
+    ans = True
+    try:
+        reg = re.compile(input())
+    except re.error:
+        ans = False
+    print(ans)
+    
+    
+# Itertools
+
+1. itertools.product()
+
+from itertools import product
+
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+print(*product(a, b))
+
+
+2. itertools.permutations()
+
+import itertools
+
+A, k = input().split()
+l = sorted(list(itertools.permutations(A,int(k))))
+for i in l:
+    print(*[''.join(i)])
+#print(*[''.join(i) for i in itertools.permutations(sorted(A),int(k))],sep='\n')
+
+
+3. itertools.combinations()
+
+from itertools import combinations
+
+s , n  = input().split()
+
+for i in range(1, int(n)+1):
+    for j in combinations(sorted(s), i):
+        print(''.join(j))
+        
+4. itertools.combinations_with_replacement()
+
+from itertools import combinations_with_replacement
+
+s, k = input().split()
+
+for c in combinations_with_replacement(sorted(s), int(k)):
+    print("".join(c))
+    
+    
+5. Compress the String!
+
+from itertools import groupby
+print(*[(len(list(c)), int(k)) for k, c in groupby(input())])
+
+
+6. Iterables and Iterators
+
+from itertools import combinations
+
+N = int(input())
+L = input().split()
+K = int(input())
+
+C = list(combinations(L, K))
+F = filter(lambda c: 'a' in c, C)
+print("{0:.3}".format(len(list(F))/len(C)))
+
+
+7. Maximize It!
+
+from itertools import product
+
+K,M = map(int,input().split())
+N = (list(map(int, input().split()))[1:] for _ in range(K))
+results = map(lambda x: sum(i**2 for i in x)%M, product(*N)) #map(function, iterable)
+print(max(results))
+
+# Date and Time
+
+1. Calendar Module
+
+import calendar
+n1,n2,n3=map(int,input().split())
+print((calendar.day_name[calendar.weekday(n3,n1,n2)]).upper())
+
+
+2. Time Delta
+
+from datetime import datetime
+for _ in range(int(input())):
+    t1=datetime.strptime(input(),'%a %d %b %Y %H:%M:%S %z')
+    t2=datetime.strptime(input(),'%a %d %b %Y %H:%M:%S %z')
+    print (int(abs((t1-t2).total_seconds())))
+    
+    
+# Python Functionals
+
+1. Map and Lambda Function
+
+cube = lambda x: pow(x,3) # complete the lambda function 
+
+def fibonacci(n):
+    # return a list of fibonacci numbers
+    lis = [0,1]
+    for i in range(2,n):
+        lis.append(lis[i-2] + lis[i-1])
+    return(lis[0:n])
+         
+
+if __name__ == '__main__':
+    n = int(input())
+    print(list(map(cube, fibonacci(n))))
+    
+    
+    
+2 Validating Email Addresses With a Filter
+
+
+def fun(s):
+    # return True if s is a valid email, else return False
+    try:
+        username, url = s.split("@")
+        website, extension = url.split(".")
+    except ValueError:
+        return False
+    
+    if not username.replace("-", "").replace("_", "").isalnum():
+        return False
+    if not website.isalnum():
+        return False
+    if len(extension) > 3:
+        return False
+    return True
+
+def filter_mail(emails):
+    return list(filter(fun, emails))
+
+if __name__ == '__main__':
+    n = int(input())
+    emails = []
+    for _ in range(n):
+        emails.append(input())
+
+filtered_emails = filter_mail(emails)
+filtered_emails.sort()
+print(filtered_emails)
+
+
+
+3. Reduce Function
+
+from fractions import Fraction
+from functools import reduce
+import operator
+
+
+def product(fracs):
+    t = reduce(operator.mul , fracs)# complete this line with a reduce statement
+    return t.numerator, t.denominator
+
+if __name__ == '__main__':
+    fracs = []
+    for _ in range(int(input())):
+        fracs.append(Fraction(*map(int, input().split())))
+    result = product(fracs)
+    print(*result)
+
+# Regex and Parsing
+
+1. Detect Floating Point Number
+
+count=int(input().strip())
+for _ in range(count):
+    ans=False
+    try:
+        string=input().strip()
+        number=float(string)
+        ans=True
+        number=int(string)
+        ans=False
+    except:
+        pass
+    print(ans)
+
+2. Re.split()
+
+regex_pattern = r"[.,]+"	# Do not delete 'r'.
+import re
+print("\n".join(re.split(regex_pattern, input())))
+
+3. Group(), Groups() & Groupdict()
+
+import re
+m = re.search(r'([a-zA-Z0-9])\1+', input().strip())
+print(m.group(1) if m else -1)
+
+
+
+
+
+
