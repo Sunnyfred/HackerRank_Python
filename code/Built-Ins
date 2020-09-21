@@ -1,0 +1,83 @@
+# Built-Ins
+
+
+1. Zipped! (zip： This function returns a list of tuples)
+
+n, x = map(int, input().split()) 
+
+sheet = []
+for _ in range(x):
+    sheet.append( map(float, input().split()) ) 
+
+for i in zip(*sheet): 
+    print( sum(i)/x )
+    
+    
+2. Input()
+
+x,k=map(int, input().split())
+print (k==eval(input()))
+
+
+
+3. Python Evaluation
+
+eval(input())
+
+
+4. Athlete Sort
+
+
+import math
+import os
+import random
+import re
+import sys
+
+
+
+if __name__ == '__main__':
+    nm = input().split()
+
+    n = int(nm[0])
+
+    m = int(nm[1])
+
+    arr = []
+
+    for _ in range(n):
+        arr.append(list(map(int, input().rstrip().split())))
+
+    k = int(input())
+
+
+arr.sort(key=lambda x: x[k])
+
+for line in arr:
+    print(*line, sep=' ', end='\n')
+
+
+    
+
+5. Any or All
+
+N, l = int(input()), input().split(' ')
+print(all([int(i)>0 for i in l]) and any([j == j[::-1] for j in l]))
+
+
+6. ginortS
+
+print(*(sorted(input(), key=lambda x: (x.isdigit(), x.isdigit() and int(x)%2==0, x.isupper(), x.islower()))), sep='')
+
+# Sorting1234
+# key=lambda x: (x.isdigit())
+# Sorting1234 -> FFFFFFFTTTT (Sorting1234)
+# key=lambda x: (x.isdigit(), x.isdigit() and int(x)%2==0)
+# Sorting1234 -> FFFFFFF(FFTT) (Sorting1324)
+# key=lambda x: (x.isdigit(), x.isdigit() and int(x)%2==0, x.isupper())
+# Sorting1324 -> (FFFFFFT)FFTT (ortingS1324)
+# key=lambda x: (x.isdigit(), x.isdigit() and int(x)%2==0, x.isupper(), x.islower())
+# ortingS1324 -> (FFFFFF)TFFTT (ortingS1324)
+# key=lambda x: (x.isdigit(), x.isdigit() and int(x)%2==0, x.isupper(), x.islower(),x) 
+# here x is used to perform defalut order rule
+# ortingS1324 -> ginortS1324
