@@ -1,0 +1,71 @@
+# Python Functionals
+
+1. Map and Lambda Function
+
+cube = lambda x: pow(x,3) # complete the lambda function 
+
+def fibonacci(n):
+    # return a list of fibonacci numbers
+    lis = [0,1]
+    for i in range(2,n):
+        lis.append(lis[i-2] + lis[i-1])
+    return(lis[0:n])
+         
+
+if __name__ == '__main__':
+    n = int(input())
+    print(list(map(cube, fibonacci(n))))
+    
+    
+    
+2 Validating Email Addresses With a Filter
+
+
+def fun(s):
+    # return True if s is a valid email, else return False
+    try:
+        username, url = s.split("@")
+        website, extension = url.split(".")
+    except ValueError:
+        return False
+    
+    if not username.replace("-", "").replace("_", "").isalnum():
+        return False
+    if not website.isalnum():
+        return False
+    if len(extension) > 3:
+        return False
+    return True
+
+def filter_mail(emails):
+    return list(filter(fun, emails))
+
+if __name__ == '__main__':
+    n = int(input())
+    emails = []
+    for _ in range(n):
+        emails.append(input())
+
+filtered_emails = filter_mail(emails)
+filtered_emails.sort()
+print(filtered_emails)
+
+
+
+3. Reduce Function
+
+from fractions import Fraction
+from functools import reduce
+import operator
+
+
+def product(fracs):
+    t = reduce(operator.mul , fracs)# complete this line with a reduce statement
+    return t.numerator, t.denominator
+
+if __name__ == '__main__':
+    fracs = []
+    for _ in range(int(input())):
+        fracs.append(Fraction(*map(int, input().split())))
+    result = product(fracs)
+    print(*result)
