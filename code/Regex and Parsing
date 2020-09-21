@@ -1,0 +1,29 @@
+# Regex and Parsing
+
+1. Detect Floating Point Number
+
+count=int(input().strip())
+for _ in range(count):
+    ans=False
+    try:
+        string=input().strip()
+        number=float(string)
+        ans=True
+        number=int(string)
+        ans=False
+    except:
+        pass
+    print(ans)
+
+2. Re.split()
+
+regex_pattern = r"[.,]+"	# Do not delete 'r'.
+import re
+print("\n".join(re.split(regex_pattern, input())))
+
+3. Group(), Groups() & Groupdict()
+
+import re
+m = re.search(r'([a-zA-Z0-9])\1+', input().strip())
+print(m.group(1) if m else -1)
+
