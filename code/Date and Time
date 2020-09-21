@@ -1,0 +1,16 @@
+# Date and Time
+
+1. Calendar Module
+
+import calendar
+n1,n2,n3=map(int,input().split())
+print((calendar.day_name[calendar.weekday(n3,n1,n2)]).upper())
+
+
+2. Time Delta
+
+from datetime import datetime
+for _ in range(int(input())):
+    t1=datetime.strptime(input(),'%a %d %b %Y %H:%M:%S %z')
+    t2=datetime.strptime(input(),'%a %d %b %Y %H:%M:%S %z')
+    print (int(abs((t1-t2).total_seconds())))
