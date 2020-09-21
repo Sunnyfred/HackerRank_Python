@@ -1,0 +1,115 @@
+# Collections
+
+
+1. collections.Counter()
+
+    
+import collections
+
+numShoes = int(input())
+shoes = collections.Counter(map(int, input().split()))
+numCust = int(input())
+
+income = 0
+
+for i in range(numCust):
+    size, price = map(int, input().split())
+    if shoes[size]: 
+        income += price
+        shoes[size] -= 1
+
+print(income)
+    
+    
+2. DefaultDict Tutorial
+
+from collections import defaultdict
+d = defaultdict(list)
+list2 = []
+
+n, m = map(int, input().split())
+for i in range(n):
+    d[input()].append(i+1)
+for i in range(m):
+    list2 += [input()]
+for i in list2:
+    if i in d:
+        print(' '.join(map(str,d[i])))
+    else:
+        print(-1)
+        
+        
+ 3. Collections.namedtuple()
+
+from collections import namedtuple
+N = int(input())
+fields = input().split()
+total = 0
+for i in range(N):
+    f1, f2, f3, f4 = input().split()
+    field = namedtuple('field', fields)
+    total += int(field(f1, f2, f3, f4).MARKS)
+print('{:.2f}'.format(total/N))
+
+
+4. Collections.OrderedDict()
+
+from collections import OrderedDict
+
+N = int(input())
+items = OrderedDict()
+for i in range(N):
+    *item_name,price = input().split()
+    try:
+        items[' '.join(item_name)] += int(price)
+    except KeyError:
+        items[' '.join(item_name)] = int(price)
+
+for it in items:
+    print(it,items[it])
+    
+5. Word Order
+
+from collections import Counter, OrderedDict
+class OrderedCounter(Counter, OrderedDict):
+    pass
+d = OrderedCounter(input() for _ in range(int(input())))
+print(len(d))
+print(*d.values())
+
+6. Collections.deque()
+
+from collections import deque
+
+d = deque()
+
+for _ in range(int(input())):
+    #method, *n = input().split()
+    #getattr(d, method)(*n)
+    eval('d.{0}({1})'.format(*input().split()+['']))
+
+print(*d)
+
+7. Piling Up!
+
+from collections import deque
+
+for _ in range(int(input())):  
+    _, queue =input(), deque(map(int, input().split()))
+    
+    for cube in reversed(sorted(queue)):
+        if queue[-1] == cube: queue.pop()
+        elif queue[0] == cube: queue.popleft()
+        else:
+            print('No')
+            break
+    else: print('Yes')
+    
+    
+8. Company Logo
+
+from collections import Counter, OrderedDict
+
+class OrderedCounter(Counter, OrderedDict):
+    pass
+[print(*c) for c in OrderedCounter(sorted(input())).most_common(3)]
